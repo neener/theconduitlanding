@@ -1,0 +1,43 @@
+{
+  "name": "videosonwater",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neener/videosonwater.git"
+  },
+  "author": "Janine Rosen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neener/videosonwater/issues"
+  },
+  "homepage": "https://github.com/neener/videosonwater",
+  "dependencies": {
+    "browserify": "^8.1.3",
+    "domready": "^1.0.7",
+    "gulp": "^3.8.10",
+    "gulp-copy": "0.0.2",
+    "gulp-install": "^0.2.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-sourcemaps": "^1.3.0",
+    "gulp-uglify": "^1.1.0",
+    "jshint-stylish": "^1.0.0",
+    "three": "^0.70.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-jshint": "^1.9.4",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^1.3.3",
+    "gulp-uglify": "^1.1.0",
+    "gulpify": "^0.1.1"
+  }
+}
