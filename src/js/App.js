@@ -36,7 +36,7 @@ var App = function(){
 
 App.prototype.makeWater = function(){
 
-   var waterNormals = new THREE.ImageUtils.loadTexture( '/textures/engine.jpg ' );
+   var waterNormals = new THREE.ImageUtils.loadTexture( '/textures/tank_normals.png' );
        waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping; 
 
    this.water = new THREE.Water( this.renderer, this.camera, this.scene, {
