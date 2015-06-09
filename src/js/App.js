@@ -75,7 +75,7 @@ App.prototype.makeEnvironment = function(){
     this.cubeMap.format = THREE.RGBFormat;
 
 
-    this.loader.load( 'textures/justpink.jpg', (function ( image ) {
+    this.loader.load( 'textures/lilpink.jpg', (function ( image ) {
       		var getSide = function ( x, y ) {
 	   			var size = 1024;
 	   			var canvas = document.createElement( 'canvas' );
