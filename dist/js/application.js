@@ -34639,7 +34639,7 @@ var App = function(){
 
 App.prototype.makeWater = function(){
 
-   var waterNormals = new THREE.ImageUtils.loadTexture( '/textures/tank_normals.png' );
+   var waterNormals = new THREE.ImageUtils.loadTexture( '/textures/whitepapers.png' );
        waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping; 
 
    this.water = new THREE.Water( this.renderer, this.camera, this.scene, {
@@ -34649,7 +34649,7 @@ App.prototype.makeWater = function(){
 		alpha: 0.5,
 		sunDirection: this.pointLight.position.normalize(),
 		sunColor: 0xffffff,
-		waterColor: 0x8B0000,
+		waterColor: 0x029ABA,
 		distortionScale: 50,
 	});
    
@@ -34678,7 +34678,7 @@ App.prototype.makeEnvironment = function(){
     this.cubeMap.format = THREE.RGBFormat;
 
 
-    this.loader.load( 'textures/lilpink.jpg', (function ( image ) {
+    this.loader.load( 'textures/lilwhite.jpg', (function ( image ) {
       		var getSide = function ( x, y ) {
 	   			var size = 1024;
 	   			var canvas = document.createElement( 'canvas' );
@@ -34718,95 +34718,95 @@ App.prototype.makeEnvironment = function(){
 
 };
 
-App.prototype.addLyrics = function(){
-	this.lyrics = [];
-	var audio = document.getElementsByTagName('audio')[0];
-	var audioLoaded = audio.readyState === 4;
-	audioLoaded ? playAudio : audio.addEventListener('canplaythrough', startKaraoke);
-	var imagesLoaded = false;
-	var started = false;
+// App.prototype.addLyrics = function(){
+// 	this.lyrics = [];
+// 	var audio = document.getElementsByTagName('audio')[0];
+// 	var audioLoaded = audio.readyState === 4;
+// 	audioLoaded ? playAudio : audio.addEventListener('canplaythrough', startKaraoke);
+// 	var imagesLoaded = false;
+// 	var started = false;
 	
-	function startKaraoke(){
-		if(started) return;
-		if(!imagesLoaded) return window.setTimeout(startKaraoke, 500);
-		console.log(started, imagesLoaded, audioLoaded)
-		started = true;
-		slideshow();
-	}
+// 	function startKaraoke(){
+// 		if(started) return;
+// 		if(!imagesLoaded) return window.setTimeout(startKaraoke, 500);
+// 		console.log(started, imagesLoaded, audioLoaded)
+// 		started = true;
+// 		slideshow();
+// 	}
 
-	function slideshow(){
-		images.forEach(setImageTimer);
-		return audio.play();
-	}
+// 	function slideshow(){
+// 		images.forEach(setImageTimer);
+// 		return audio.play();
+// 	}
 
-	function setImageTimer(img){
-		setTimeout(playImage.bind(this, img), img.startTime);
-	}
+// 	function setImageTimer(img){
+// 		setTimeout(playImage.bind(this, img), img.startTime);
+// 	}
 
-	function playImage(img){
-		document.body.appendChild(img.obj);
-		window.setTimeout(stopImage.bind(this, img), img.duration);
-	}
+// 	function playImage(img){
+// 		document.body.appendChild(img.obj);
+// 		window.setTimeout(stopImage.bind(this, img), img.duration);
+// 	}
 
-	function stopImage(img){
-		document.body.removeChild(img.obj);
-	}
+// 	function stopImage(img){
+// 		document.body.removeChild(img.obj);
+// 	}
 
-	var images = [
-			{imagePath: "/textures/lyrics/1.gif", duration: 4530, startTime: 32927},
-			{imagePath: "/textures/lyrics/2.gif", duration: 4530, startTime: 37837},
-			{imagePath: "/textures/lyrics/3.gif", duration: 4530, startTime: 43760},
-			{imagePath: "/textures/lyrics/4.gif", duration: 4530, startTime: 48695},
-			{imagePath: "/textures/lyrics/5.gif", duration: 4530, startTime: 54618},
+// 	var images = [
+// 			{imagePath: "/textures/lyrics/1.gif", duration: 4530, startTime: 32927},
+// 			{imagePath: "/textures/lyrics/2.gif", duration: 4530, startTime: 37837},
+// 			{imagePath: "/textures/lyrics/3.gif", duration: 4530, startTime: 43760},
+// 			{imagePath: "/textures/lyrics/4.gif", duration: 4530, startTime: 48695},
+// 			{imagePath: "/textures/lyrics/5.gif", duration: 4530, startTime: 54618},
 
-			{imagePath: "/textures/lyrics/6.gif", duration: 4530, startTime: 60540},
-			{imagePath: "/textures/lyrics/7.gif", duration: 4530, startTime: 67010},
-			{imagePath: "/textures/lyrics/8.gif", duration: 4530, startTime: 72020},
+// 			{imagePath: "/textures/lyrics/6.gif", duration: 4530, startTime: 60540},
+// 			{imagePath: "/textures/lyrics/7.gif", duration: 4530, startTime: 67010},
+// 			{imagePath: "/textures/lyrics/8.gif", duration: 4530, startTime: 72020},
 
-			{imagePath: "/textures/lyrics/9.gif", duration: 4530, startTime: 97029},
-			{imagePath: "/textures/lyrics/10.gif", duration: 4530, startTime: 102028},
-			{imagePath: "/textures/lyrics/11.gif", duration: 4530, startTime: 108025},
-			{imagePath: "/textures/lyrics/12.gif", duration: 4530, startTime: 114023},
-			{imagePath: "/textures/lyrics/13.gif", duration: 4530, startTime: 119029},
+// 			{imagePath: "/textures/lyrics/9.gif", duration: 4530, startTime: 97029},
+// 			{imagePath: "/textures/lyrics/10.gif", duration: 4530, startTime: 102028},
+// 			{imagePath: "/textures/lyrics/11.gif", duration: 4530, startTime: 108025},
+// 			{imagePath: "/textures/lyrics/12.gif", duration: 4530, startTime: 114023},
+// 			{imagePath: "/textures/lyrics/13.gif", duration: 4530, startTime: 119029},
 
-			{imagePath: "/textures/lyrics/14.gif", duration: 4530, startTime: 126000},
-			{imagePath: "/textures/lyrics/15.gif", duration: 4530, startTime: 131280},
-			{imagePath: "/textures/lyrics/16.gif", duration: 4530, startTime: 136280},
+// 			{imagePath: "/textures/lyrics/14.gif", duration: 4530, startTime: 126000},
+// 			{imagePath: "/textures/lyrics/15.gif", duration: 4530, startTime: 131280},
+// 			{imagePath: "/textures/lyrics/16.gif", duration: 4530, startTime: 136280},
 
-			{imagePath: "/textures/lyrics/17.gif", duration: 4530, startTime: 152170},
-			{imagePath: "/textures/lyrics/18.gif", duration: 4530, startTime: 158190},
-			{imagePath: "/textures/lyrics/19.gif", duration: 4530, startTime: 164080},
-			{imagePath: "/textures/lyrics/20.gif", duration: 4530, startTime: 169150},
-			{imagePath: "/textures/lyrics/21.gif", duration: 4530, startTime: 179080},
+// 			{imagePath: "/textures/lyrics/17.gif", duration: 4530, startTime: 152170},
+// 			{imagePath: "/textures/lyrics/18.gif", duration: 4530, startTime: 158190},
+// 			{imagePath: "/textures/lyrics/19.gif", duration: 4530, startTime: 164080},
+// 			{imagePath: "/textures/lyrics/20.gif", duration: 4530, startTime: 169150},
+// 			{imagePath: "/textures/lyrics/21.gif", duration: 4530, startTime: 179080},
 
-			{imagePath: "/textures/lyrics/22.gif", duration: 4530, startTime: 184160},
-			{imagePath: "/textures/lyrics/23.gif", duration: 4530, startTime: 189170},
-			{imagePath: "/textures/lyrics/24.gif", duration: 4530, startTime: 195110},
+// 			{imagePath: "/textures/lyrics/22.gif", duration: 4530, startTime: 184160},
+// 			{imagePath: "/textures/lyrics/23.gif", duration: 4530, startTime: 189170},
+// 			{imagePath: "/textures/lyrics/24.gif", duration: 4530, startTime: 195110},
 
-			{imagePath: "/textures/lyrics/25.gif", duration: 4530, startTime: 201120},
-			{imagePath: "/textures/lyrics/26.gif", duration: 4530, startTime: 207090},
-			{imagePath: "/textures/lyrics/27.gif", duration: 4530, startTime: 213100},
-			{imagePath: "/textures/lyrics/28.gif", duration: 4530, startTime: 218090}
-	];
-	var counter = images.length;
-	images.forEach(function(image){
-		console.log(image);
-		var self = this;
+// 			{imagePath: "/textures/lyrics/25.gif", duration: 4530, startTime: 201120},
+// 			{imagePath: "/textures/lyrics/26.gif", duration: 4530, startTime: 207090},
+// 			{imagePath: "/textures/lyrics/27.gif", duration: 4530, startTime: 213100},
+// 			{imagePath: "/textures/lyrics/28.gif", duration: 4530, startTime: 218090}
+// 	];
+// 	var counter = images.length;
+// 	images.forEach(function(image){
+// 		console.log(image);
+// 		var self = this;
 		
-		var loader = new Image();
+// 		var loader = new Image();
 		
-		loader.addEventListener('load', function(){
-			counter--;
-			console.log(counter);
-			image.obj = loader;
-			if(counter === 0) imagesLoaded = true;
-		});
+// 		loader.addEventListener('load', function(){
+// 			counter--;
+// 			console.log(counter);
+// 			image.obj = loader;
+// 			if(counter === 0) imagesLoaded = true;
+// 		});
 
-		loader.src = image.imagePath;
+// 		loader.src = image.imagePath;
 
 		
-	}, this);
-};
+// 	}, this);
+// };
 
 App.prototype.init = function(){
 	window.addEventListener('resize', function(){
@@ -34817,7 +34817,7 @@ App.prototype.init = function(){
 		self.camera.updateProjectionMatrix();
 		self.renderer.setSize( window.innerWidth, window.innerHeight );
 	});
-	this.addLyrics();
+	// this.addLyrics();
 	this.render();
 };
 
