@@ -34639,7 +34639,7 @@ var App = function(){
 
 App.prototype.makeWater = function(){
 
-   var waterNormals = new THREE.ImageUtils.loadTexture( '/textures/whitepapers.png' );
+   var waterNormals = new THREE.ImageUtils.loadTexture( '/textures/landingpageengine.png' );
        waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping; 
 
    this.water = new THREE.Water( this.renderer, this.camera, this.scene, {
@@ -34648,7 +34648,7 @@ App.prototype.makeWater = function(){
 		waterNormals: waterNormals,
 		alpha: 0.5,
 		sunDirection: this.pointLight.position.normalize(),
-		sunColor: 0xffffff,
+		sunColor: 0x0033CC,
 		waterColor: 0x029ABA,
 		distortionScale: 50,
 	});
