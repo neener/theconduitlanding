@@ -1,4 +1,5 @@
 var THREE = require('three');
+THREE.ImageUtils.crossOrigin = '';
 require('./MirrorLoader.js')(THREE);
 require('./WaterLoader.js')(THREE);
 
@@ -11,9 +12,9 @@ var App = function(){
    this.width = window.innerWidth;
 
    window.camera = this.camera = new THREE.PerspectiveCamera( 45, this.width / this.height, 1, 3000000 );
-   this.camera.up = new THREE.Vector3(0,0,1);
+   this.camera.up = new THREE.Vector3(0, 0, 1);
    this.camera.position.set( 10, 100, 0 );
-   this.camera.lookAt(new THREE.Vector3(0,0,0));
+   this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
    this.renderer = new THREE.WebGLRenderer({ antialias: true });
    this.renderer.shadowMapType = THREE.PCFSoftShadowMap;
@@ -36,7 +37,7 @@ var App = function(){
 
 App.prototype.makeWater = function(){
 
-   var waterNormals = new THREE.ImageUtils.loadTexture( '/textures/landingpageengine.png' );
+   var waterNormals = new THREE.ImageUtils.loadTexture( '/textures/bground.jpg' );
        waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping; 
 
    this.water = new THREE.Water( this.renderer, this.camera, this.scene, {
@@ -45,7 +46,7 @@ App.prototype.makeWater = function(){
 		waterNormals: waterNormals,
 		alpha: 0.5,
 		sunDirection: this.pointLight.position.normalize(),
-		sunColor: 0x0033CC,
+		sunColor: 0xFF0000,
 		waterColor: 0x029ABA,
 		distortionScale: 50,
 	});
@@ -75,7 +76,7 @@ App.prototype.makeEnvironment = function(){
     this.cubeMap.format = THREE.RGBFormat;
 
 
-    this.loader.load( 'textures/lilwhite.jpg', (function ( image ) {
+    this.loader.load( 'textures/whitepapers.png', (function ( image ) {
       		var getSide = function ( x, y ) {
 	   			var size = 1024;
 	   			var canvas = document.createElement( 'canvas' );
@@ -206,6 +207,7 @@ App.prototype.makeEnvironment = function(){
 // };
 
 App.prototype.init = function(){
+	var self=this;
 	window.addEventListener('resize', function(){
 		if(window.innerWidth < 840) self.camera.position.set( 10, 120, 0 );
 		if(window.innerWidth < 530) self.camera.position.set( 20, 140, 0 );
@@ -214,12 +216,20 @@ App.prototype.init = function(){
 		self.camera.updateProjectionMatrix();
 		self.renderer.setSize( window.innerWidth, window.innerHeight );
 	});
-	// this.addLyrics();
+	// var logo = document.querySelector("#logo-close");
+	// var cover = document.querySelector('#cover');
+
+	// logo.addEventListener('click', function(){
+	// 	self.container.removeChild(self.renderer.domElement);
+	// 	logo.parentNode.removeChild(logo);
+	// 	cover.parentNode.removeChild(cover);
+	// 	self.stopRender();
+	// })
 	this.render();
 };
 
 App.prototype.render = function(){
-
+	if(this.noRender) return;
 
 	this.water.material.uniforms.time.value += 1.0 / 400.0;
 	try{
@@ -230,6 +240,10 @@ App.prototype.render = function(){
 	this.renderer.render( this.scene, this.camera );
 	var self = this;
 	window.setTimeout(function(){window.requestAnimationFrame(self.render.bind(self));}, 60);
+};
+
+App.prototype.stopRender = function(){
+	this.noRender = true;
 };
 
 

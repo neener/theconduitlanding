@@ -20,7 +20,7 @@ gulp.task('browserify', function() {
       .pipe(source('application.js'))
       .pipe(buffer())
       .pipe(sourcemaps.init({loadMaps: true}))
-      // .pipe(uglify())
+      .pipe(uglify())
       .pipe(sourcemaps.write('./maps'))
       .pipe(gulp.dest('./dist/js/'));
   };
